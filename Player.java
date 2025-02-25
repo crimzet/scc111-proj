@@ -1,8 +1,6 @@
 public class Player 
 {
     private int hp;
-    private int x;
-    private int y;
     private int width = 20;
     private int height = 40;
     private String color = "RED";
@@ -10,16 +8,16 @@ public class Player
 
     public int getX()
     {
-        return this.x;
+        return (int)this.body.getXPosition();
     }
     public int getY()
     {
-        return this.y;
+        return (int)this.body.getYPosition();
     }
     public void move(int x, int y)
     {
-        this.x += x;
-        this.y += y;
+        this.body.setXPosition((double)x + this.body.getXPosition());
+        this.body.setYPosition((double)y + this.body.getYPosition());
     }
     public void addTo(GameArena arena)
     {
@@ -28,8 +26,6 @@ public class Player
     public Player(int hp, int x, int y) 
     {
         this.hp = hp;
-        this.x = x;
-        this.y = y;
 
         // creat body
         this.body = new Rectangle(x, y, width, height, color);
