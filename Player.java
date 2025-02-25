@@ -14,6 +14,14 @@ public class Player
     {
         return (int)this.body.getYPosition();
     }
+    public int getWidth()
+    {
+        return width;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
     public void move(int x, int y)
     {
         this.body.setXPosition((double)x + this.body.getXPosition());

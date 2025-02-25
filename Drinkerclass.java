@@ -4,19 +4,29 @@ public class Drinkerclass
     {
         if (arena.letterPressed('w'))
         {
-            player.move(0, -speed);
+            if (player.getY()!=0){
+                player.move(0, -speed);
+            }
         }
         if (arena.letterPressed('a'))
         {
-            player.move(-speed, 0);
+            if (player.getX()!=0){
+                player.move(-speed, 0);
+            }
         }
         if (arena.letterPressed('s'))
         {
-            player.move(0, speed);
+            if (player.getY()!=arena.getArenaHeight()-player.getHeight()){
+                player.move(0, speed);
+            }
+            
         }
         if (arena.letterPressed('d'))
         {
-            player.move(speed, 0);
+            if (player.getX()!=arena.getArenaWidth()-player.getWidth()){
+                player.move(speed, 0);
+            }
+            
         }
     }
     public static void main(String[] args)
