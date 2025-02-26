@@ -3,8 +3,11 @@ public class Player
     private int hp;
     private int width = 20;
     private int height = 40;
-    private String color = "RED";
+    private String color = "BLACK";
+    // The rectangle, used for collision and other physics
     private Rectangle body;
+    // This is just a visual representation of a bottle
+    private Rectangle[] texture;
 
     public int getX()
     {
@@ -24,18 +27,41 @@ public class Player
     }
     public void move(int x, int y)
     {
+        // Normalize the movement in 2D
+        // If the player moves diagonally, they move faster, as both x and y are changed
+        if (x != 0 && y != 0)
+        {
+            double factor = Math.sqrt(0.5);
+            x *= factor;
+            y *= factor;
+        }
+        // Change the main body position
         this.body.setXPosition((double)x + this.body.getXPosition());
         this.body.setYPosition((double)y + this.body.getYPosition());
+        // Change position of every square in the bottle
+        for (Rectangle a : this.texture)
+        {
+            a.setXPosition((double)x + a.getXPosition());
+            a.setYPosition((double)y + a.getYPosition());
+        }
     }
     public void addTo(GameArena arena)
     {
+        // Add the main body to the arena
         arena.addRectangle(body);
+        // Add every square that makes up the bottle to the arena
+        for (Rectangle a : this.texture)
+        {
+            arena.addRectangle(a);
+        }
     }
     public Player(int hp, int x, int y) 
     {
         this.hp = hp;
 
-        // creat body
+        // create body
         this.body = new Rectangle(x, y, width, height, color);
+        // create an array of rectangles that makes it look like a bottle
+        this.texture = new Rectangle[] { new Rectangle(x, y+17, width, 23, "RED"), new Rectangle(x+6, y+5, 8, 12, "YELLOW"), new Rectangle(x+3, y, 14, 5, "PINK") };
     }
 }
