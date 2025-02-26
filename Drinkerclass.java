@@ -32,7 +32,7 @@ public class Drinkerclass
     public static void main(String[] args)
     {
         GameArena arena = new GameArena(500, 300);
-
+        arena.setBackgroundImage("/home/martz/h-drive/png-clipart-dota-2-ogre-mage-magi-the-labyrinth-of-magic-hero-hero-fictional-characters-manga-thumbnail.png");
         Player player = new Player(10, 250, 150);
         player.addTo(arena);
 
