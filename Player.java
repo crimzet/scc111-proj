@@ -55,6 +55,35 @@ public class Player
             arena.addRectangle(a);
         }
     }
+    public void runControls(GameArena arena, Player player, int speed)
+    {
+        if (arena.letterPressed('w'))
+        {
+            if (player.getY()!=0){
+                player.move(0, -speed);
+            }
+        }
+        if (arena.letterPressed('a'))
+        {
+            if (player.getX()!=0){
+                player.move(-speed, 0);
+            }
+        }
+        if (arena.letterPressed('s'))
+        {
+            if (player.getY()!=arena.getArenaHeight()-player.getHeight()){
+                player.move(0, speed);
+            }
+            
+        }
+        if (arena.letterPressed('d'))
+        {
+            if (player.getX()!=arena.getArenaWidth()-player.getWidth()){
+                player.move(speed, 0);
+            }
+            
+        }
+    }
     public Player(int hp, int x, int y) 
     {
         this.hp = hp;
