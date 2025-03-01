@@ -406,7 +406,10 @@ public class GameArena extends JPanel implements Runnable, KeyListener, MouseLis
 	{
 		this.addThing(r, r.getLayer());
 	}
-
+	public void addProjectile (Projectile r) //not working
+	{
+		this.addThing(r, r.getLayer());
+	}
 	/**
 	 * Adds a given Line to the GameArena.
 	 * Once a Line is added, it will automatically appear on the window.
